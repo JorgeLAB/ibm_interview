@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160402184051) do
+ActiveRecord::Schema.define(version: 20160402215126) do
+
+  create_table "cities", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "state_id"
+  end
+
+  add_index "cities", ["state_id"], name: "index_cities_on_state_id"
 
   create_table "people", force: :cascade do |t|
     t.string   "first_name"
@@ -27,14 +35,17 @@ ActiveRecord::Schema.define(version: 20160402184051) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "state_id"
+    t.integer  "city_id"
   end
 
+  add_index "people", ["city_id"], name: "index_people_on_city_id"
   add_index "people", ["state_id"], name: "index_people_on_state_id"
 
   create_table "states", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.string   "acronym",    limit: 2
   end
 
   add_index "states", ["name"], name: "index_states_on_name", unique: true
