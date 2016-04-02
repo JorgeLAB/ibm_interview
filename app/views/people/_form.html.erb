@@ -20,8 +20,24 @@
     <%= f.text_field :last_name %>
   </div>
   <div class="field">
+    <%= f.label :email %><br>
+    <%= f.email_field :email %>
+  </div>
+  <div class="field">
     <%= f.label :company_name %><br>
     <%= f.text_field :company_name %>
+  </div>
+  <div class="field">
+    <%= f.label :phone1 %><br>
+    <%= f.phone_field :phone1 %>
+  </div>
+  <div class="field">
+    <%= f.label :phone2 %><br>
+    <%= f.phone_field :phone2 %>
+  </div>
+  <div class="field">
+    <%= f.label :web %><br>
+    <%= f.url_field :web %>
   </div>
   <div class="field">
     <%= f.label :address %><br>
@@ -36,20 +52,8 @@
     <%= f.text_field :zip %>
   </div>
   <div class="field">
-    <%= f.label :phone1 %><br>
-    <%= f.text_field :phone1 %>
-  </div>
-  <div class="field">
-    <%= f.label :phone2 %><br>
-    <%= f.text_field :phone2 %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :web %><br>
-    <%= f.text_field :web %>
+    <%= f.label :state %><br>
+    <%= f.collection_select :state_id, State.all, :id, :name %>
   </div>
   <div class="actions">
     <%= f.submit %>

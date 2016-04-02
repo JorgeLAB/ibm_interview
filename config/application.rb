@@ -27,7 +27,8 @@ module IbmInterview
       g.test_framework :rspec,
         request_specs: false,
         routing_specs: false,
-        helper_specs: false
+        helper_specs: false,
+        view_specs: false
       g.fixture_replacement :factory_girl
     end
 
