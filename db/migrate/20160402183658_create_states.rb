@@ -1,10 +1,10 @@
 class CreateStates < ActiveRecord::Migration
   def change
     create_table :states do |t|
-      t.string :name
+      t.string :acronym, limit: 2
       t.timestamps null: false
     end
 
-    add_index :states, :name, unique: true
+    add_index :states, :acronym, unique: true
   end
 end
