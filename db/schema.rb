@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 20160402215126) do
 
   create_table "cities", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "state_id"
@@ -42,12 +43,11 @@ ActiveRecord::Schema.define(version: 20160402215126) do
   add_index "people", ["state_id"], name: "index_people_on_state_id"
 
   create_table "states", force: :cascade do |t|
-    t.string   "name"
+    t.string   "acronym",    limit: 2
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
-    t.string   "acronym",    limit: 2
   end
 
-  add_index "states", ["name"], name: "index_states_on_name", unique: true
+  add_index "states", ["acronym"], name: "index_states_on_acronym", unique: true
 
 end
