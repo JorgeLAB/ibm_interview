@@ -31,13 +31,8 @@
 </p>
 
 <p>
-  <strong>Phone1:</strong>
-  <%= @person.phone1 %>
-</p>
-
-<p>
-  <strong>Phone2:</strong>
-  <%= @person.phone2 %>
+  <strong>Phones:</strong>
+  <%= @person.phone1 %> / <%= @person.phone2 %>
 </p>
 
 <p>
@@ -47,7 +42,7 @@
 
 <p>
   <strong>Web:</strong>
-  <%= @person.web %>
+  <%= link_to @person.web, @person.web, target: "_blank" %>
 </p>
 
 <%= link_to 'Edit', edit_person_path(@person) %> |
