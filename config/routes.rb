@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :people
 
   get "/get_cities" => "states#get_cities", format: 'json'
