@@ -1,6 +1,4 @@
-<h1>Editing Person</h1>
-
-<p id="notice"><%= notice %></p>
+<h1>Show Person</h1>
 
 <div class="row">
   <div class="col-md-6">
@@ -21,7 +19,7 @@
 
     <p class="lead">
       <strong>Phones:</strong>
-      <%= @person.phone1 %> / <%= @person.phone2 %>
+      <%= @person.phone1 %> <% puts "/#{@person.phone2}" if @person.phone2 %>
     </p>
 
     <p class="lead">

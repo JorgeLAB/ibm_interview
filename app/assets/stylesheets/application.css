@@ -19,3 +19,13 @@
 p.lead {
   font-size: 15px;
 }
+
+
+span.error {
+  color: red;
+}
+
+
+span.error input, span.error select {
+  border-color: red;
+}

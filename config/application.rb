@@ -32,5 +32,9 @@ module IbmInterview
       g.fixture_replacement :factory_girl
     end
 
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance|
+      "<span class=\"error\">#{html_tag}</span>".html_safe
+    }
+
   end
 end

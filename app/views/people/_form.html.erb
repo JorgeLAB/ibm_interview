@@ -1,13 +1,15 @@
 <%= form_for(@person) do |f| %>
   <% if @person.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h2>
+    <div class="row">
+      <div class="alert alert-danger">
+        <h5><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h5>
 
-      <ul>
-      <% @person.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @person.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
@@ -63,7 +65,7 @@
       <div class="form-group">
         <%= f.label :city %><br>
         <%= f.collection_select :city_id, cities_in_order(@person[:state_id]), :id, :name, {},
-                                { class: "form-control", disabled: false } %>
+                                { class: "form-control", disabled: (true unless @person[:city_id]) } %>
       </div>
     </div>
   </div>
