@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe PeopleController, type: :controller do
 
+  login_user
   let(:person) { create :person }
 
   describe "GET #index" do
@@ -33,78 +34,47 @@ RSpec.describe PeopleController, type: :controller do
   end
 
   describe "POST #create" do
-    context "with valid params" do
-      it "creates a new Person" do
-        expect {
-          post :create, person: attributes_for(:person)
-        }.to change(Person, :count).by(1)
-      end
-
-      it "assigns a newly created person as @person" do
+    it "creates a new Person" do
+      expect {
         post :create, person: attributes_for(:person)
-        expect(assigns(:person)).to be_persisted
-      end
-
-      it "redirects to the created person" do
-        post :create, person: attributes_for(:person)
-        expect(response).to redirect_to(Person.last)
-      end
+      }.to change(Person, :count).by(1)
     end
 
-    pending "with invalid params" do
-      it "assigns a newly created but unsaved person as @person" do
-        post :create, {:person => invalid_attributes}, valid_session
-        expect(assigns(:person)).to be_a_new(Person)
-      end
+    it "assigns a newly created person as @person" do
+      post :create, person: attributes_for(:person)
+      expect(assigns(:person)).to be_persisted
+    end
 
-      it "re-renders the 'new' template" do
-        post :create, {:person => invalid_attributes}, valid_session
-        expect(response).to render_template("new")
-      end
+    it "redirects to the created person" do
+      post :create, person: attributes_for(:person)
+      expect(response).to redirect_to(Person.last)
     end
   end
 
   describe "PATCH #update" do
-    context "with valid params" do
-
-      let(:new_person) { build(:person, name: 'New name') }
-
-      it "assigns the requested person as @person" do
-        patch :update, id: person[:id], person: attributes_for(:person, name: 'New name')
-        expect(assigns(:person)).to eq(new_person)
-      end
-
-      it "redirects to the person" do
-        put :update, id: person[:id], person: attributes_for(:person, name: 'New name')
-        expect(response).to redirect_to(person)
-      end
+    it "assigns the requested person as @person" do
+      patch :update, id: person[:id], person: attributes_for(:person, name: 'New name')
+      person.reload
+      expect(assigns(:person)).to eq(person)
     end
 
-    pending "with invalid params" do
-      skip "it doesn't have attribures validation yet"
-      it "assigns the person as @person" do
-        person = Person.create! valid_attributes
-        put :update, {:id => person.to_param, :person => invalid_attributes}, valid_session
-        expect(assigns(:person)).to eq(person)
-      end
-
-      it "re-renders the 'edit' template" do
-        person = Person.create! valid_attributes
-        put :update, {:id => person.to_param, :person => invalid_attributes}, valid_session
-        expect(response).to render_template("edit")
-      end
+    it "redirects to the person" do
+      put :update, id: person[:id], person: attributes_for(:person, name: 'New name')
+      expect(response).to redirect_to(person)
     end
   end
 
   describe "DELETE #destroy" do
+    let!(:person_delete) { create :person }
+
     it "destroys the requested person" do
       expect {
-        delete :destroy, id: person[:id]
+        delete :destroy, id: person_delete[:id]
       }.to change(Person, :count).by(-1)
     end
 
     it "redirects to the people list" do
-      delete :destroy, id: person[:id]
+      delete :destroy, id: person_delete[:id]
       expect(response).to redirect_to(people_url)
     end
   end
