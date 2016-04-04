@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :people
+
+  get "/get_cities" => "states#get_cities", format: 'json'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
