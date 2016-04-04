@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root "people#index"
+
   devise_for :users
   resources :people
 

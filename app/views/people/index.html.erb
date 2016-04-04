@@ -1,8 +1,7 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Listing People</h1>
+<%= link_to 'New Person', new_person_path, class: "btn btn-primary" %>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>First name</th>
@@ -10,7 +9,6 @@
       <th>Company name</th>
       <th>Phones</th>
       <th>Email</th>
-      <th>Web</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -23,15 +21,13 @@
         <td><%= person.company_name %></td>
         <td><%= person.phone1 %> / <%= person.phone2 %></td>
         <td><%= person.email %></td>
-        <td><%= link_to person.web, person.web, target: "_blank" %></td>
-        <td><%= link_to 'Show', person %></td>
-        <td><%= link_to 'Edit', edit_person_path(person) %></td>
-        <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '', person, class:"btn btn-default btn-sm glyphicon glyphicon-eye-open" %></td>
+        <td><%= link_to '', edit_person_path(person), class:"btn btn-primary btn-sm glyphicon glyphicon-pencil" %></td>
+        <td>
+            <%= link_to '', person, class:"btn btn-danger btn-sm glyphicon glyphicon-trash",
+                method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Person', new_person_path %>

@@ -11,55 +11,65 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :first_name %><br>
+        <%= f.text_field :first_name, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :last_name %><br>
+        <%= f.text_field :last_name, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email %><br>
+        <%= f.email_field :email, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :company_name %><br>
+        <%= f.text_field :company_name, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :phone1 %><br>
+        <%= f.phone_field :phone1, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :phone2 %><br>
+        <%= f.phone_field :phone2, class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :web %><br>
+        <%= f.url_field :web, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :address %><br>
+        <%= f.text_field :address, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :county %><br>
+        <%= f.text_field :county, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :zip %><br>
+        <%= f.text_field :zip, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :state %><br>
+        <%= f.collection_select :state_id, states_in_order, :id, :acronym, { prompt: true},
+                { class: "form-control" } %>
+      </div>
+      <div class="form-group">
+        <%= f.label :city %><br>
+        <%= f.collection_select :city_id, cities_in_order(@person[:state_id]), :id, :name, {},
+                                { class: "form-control", disabled: false } %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.email_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :company_name %><br>
-    <%= f.text_field :company_name %>
-  </div>
-  <div class="field">
-    <%= f.label :phone1 %><br>
-    <%= f.phone_field :phone1 %>
-  </div>
-  <div class="field">
-    <%= f.label :phone2 %><br>
-    <%= f.phone_field :phone2 %>
-  </div>
-  <div class="field">
-    <%= f.label :web %><br>
-    <%= f.url_field :web %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
-  </div>
-  <div class="field">
-    <%= f.label :county %><br>
-    <%= f.text_field :county %>
-  </div>
-  <div class="field">
-    <%= f.label :zip %><br>
-    <%= f.text_field :zip %>
-  </div>
-  <div class="field">
-    <%= f.label :state %><br>
-    <%= f.collection_select :state_id, states_in_order, :id, :acronym %>
-  </div>
-  <div class="field">
-    <%= f.label :city %><br>
-    <%= f.collection_select :city_id, {}, :id, :name, {}, { disabled: true } %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="row">
+    <div class="col-md-3 form-group">
+      <%= f.submit class: "btn btn-md btn-primary" %>
+    </div>
   </div>
 <% end %>

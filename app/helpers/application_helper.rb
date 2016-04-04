@@ -4,4 +4,8 @@ module ApplicationHelper
     State.all.order :acronym
   end
 
+  def cities_in_order(state)
+    City.where(state_id: state) || {}
+  end
+
 end

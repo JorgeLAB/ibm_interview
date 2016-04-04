@@ -17,6 +17,6 @@ ActiveRecord::Base.transaction do
     person_table.headers.each { |header| person_data[:"#{header}"] = row.fetch(header) }
     person_data[:state] = state
     person_data[:city] = city
-    puts Person.create(person_data)
+    Person.create(person_data)
   end
 end
